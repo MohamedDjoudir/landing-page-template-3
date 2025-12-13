@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import { motion } from "framer-motion"
+import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function SocialProof() {
   const companies = [
@@ -18,7 +18,7 @@ export default function SocialProof() {
     { value: "500+", label: "Enterprise Clients" },
     { value: "99.9%", label: "Uptime SLA" },
     { value: "24/7", label: "Dedicated Support" },
-  ]
+  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -29,7 +29,7 @@ export default function SocialProof() {
         delayChildren: 0.2,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -38,13 +38,13 @@ export default function SocialProof() {
       y: 0,
       transition: {
         duration: 0.5,
-        ease: "easeOut",
+        ease: "easeOut" as const,
       },
     },
-  }
+  };
 
   return (
-    <section 
+    <section
       className="relative py-12 sm:py-16 md:py-20 overflow-hidden bg-black"
       aria-labelledby="social-proof-heading"
     >
@@ -63,8 +63,15 @@ export default function SocialProof() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <p className="text-base sm:text-lg text-amber-400 font-medium mb-2">Trusted by industry leaders</p>
-          <h2 id="social-proof-heading" className="text-xl sm:text-2xl md:text-3xl font-bold text-white">Join thousands of satisfied customers</h2>
+          <p className="text-base sm:text-lg text-amber-400 font-medium mb-2">
+            Trusted by industry leaders
+          </p>
+          <h2
+            id="social-proof-heading"
+            className="text-xl sm:text-2xl md:text-3xl font-bold text-white"
+          >
+            Join thousands of satisfied customers
+          </h2>
         </motion.div>
 
         {/* Company logos */}
@@ -84,11 +91,11 @@ export default function SocialProof() {
             >
               {/* Use a placeholder or actual logo */}
               <div className="w-[30px] h-[30px] sm:w-[80px] sm:h-[80px] md:h-[40px] flex items-center justify-center">
-                <Image 
-                  src={company.logo} 
+                <Image
+                  src={company.logo}
                   alt={`${company.name} logo`}
-                  width={60} 
-                  height={60} 
+                  width={60}
+                  height={60}
                   className="object-contain filter brightness-0 invert"
                 />
               </div>
@@ -106,23 +113,27 @@ export default function SocialProof() {
           aria-label="Key platform statistics"
         >
           {stats.map((stat, index) => (
-            <motion.div key={index} className="text-center h-full" variants={itemVariants}>
+            <motion.div
+              key={index}
+              className="text-center h-full"
+              variants={itemVariants}
+            >
               <div className="relative group h-full">
-                <div 
+                <div
                   className="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-amber-500 rounded-lg blur opacity-30 group-hover:opacity-60 transition duration-300"
                   aria-hidden="true"
                 ></div>
-                <div 
+                <div
                   className="relative bg-black/70 backdrop-blur-sm rounded-lg p-4 sm:p-6 border border-white/10 h-full flex flex-col justify-center"
                   role="presentation"
                 >
-                  <div 
+                  <div
                     className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-red-400 to-amber-400 bg-clip-text text-transparent mb-1 sm:mb-2 truncate"
                     aria-hidden="true"
                   >
                     {stat.value}
                   </div>
-                  <p 
+                  <p
                     className="text-white/70 text-sm sm:text-base truncate"
                     aria-label={`${stat.value} ${stat.label}`}
                   >
@@ -135,5 +146,5 @@ export default function SocialProof() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
