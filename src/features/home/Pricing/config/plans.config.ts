@@ -1,0 +1,58 @@
+export const pricingConfig = {
+    title: "Simple, Transparent Pricing",
+    subtitle: "Choose the plan that works best for your business. All plans include our core features.",
+    trialInfo: "All plans include a 14-day free trial. No credit card required.",
+
+    plans: [
+        {
+            name: "Starter",
+            description: "Perfect for individuals and small teams",
+            monthlyPrice: 39,
+            annualPrice: 29,
+            features: [
+                "5 Team Members",
+                "10GB Storage",
+                "Basic Analytics",
+                "Email Support",
+                "2 Projects",
+            ],
+            cta: "Get Started",
+            popular: false,
+        },
+        {
+            name: "Professional",
+            description: "Ideal for growing businesses",
+            monthlyPrice: 99,
+            annualPrice: 79,
+            features: [
+                "15 Team Members",
+                "50GB Storage",
+                "Advanced Analytics",
+                "Priority Support",
+                "API Access",
+                "Custom Integrations",
+                "Unlimited Projects",
+            ],
+            cta: "Get Started",
+            popular: true,
+        },
+        {
+            name: "Enterprise",
+            description: "For large organizations with complex needs",
+            monthlyPrice: 199,
+            annualPrice: 149,
+            features: [
+                "Unlimited Team Members",
+                "500GB Storage",
+                "Enterprise Analytics",
+                "24/7 Dedicated Support",
+                "Advanced Security",
+                "Custom Development",
+                "Onboarding Assistance",
+                "SLA Guarantee",
+            ],
+            cta: "Contact Sales",
+            popular: false,
+        },
+    ],
+}

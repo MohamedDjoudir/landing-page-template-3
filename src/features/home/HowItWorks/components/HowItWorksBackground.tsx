@@ -1,0 +1,11 @@
+"use client";
+
+export function HowItWorksBackground() {
+  return (
+    <div className="absolute inset-0 z-0">
+      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-red-500/10 rounded-full blur-[100px]"></div>
+      <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-amber-500/10 rounded-full blur-[100px]"></div>
+      <div className="absolute inset-0 bg-[url('/images/grid.svg')] bg-repeat opacity-5"></div>
+    </div>
+  );
+}
