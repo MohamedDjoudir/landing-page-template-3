@@ -3,7 +3,6 @@
 import { Link } from "@/i18n/navigation";
 import { LocaleSwitcher } from "@/components/LocaleSwitcher";
 import { cn } from "@/lib/utils";
-import { HEADER_HEIGHT_PX } from "../constants";
 import { useActiveDropdown, useNavItems } from "../hooks";
 import { AuthButtons } from "./AuthButtons";
 import { NavDropdown } from "./NavDropdown";
@@ -19,14 +18,15 @@ export function MobileNav({ isOpen }: MobileNavProps) {
   return (
     <div
       className={cn(
-        "md:hidden fixed inset-x-0 bg-black/95 backdrop-blur-lg border-t border-white/10 transition-opacity duration-300",
-        isOpen ? "opacity-100" : "opacity-0 invisible pointer-events-none"
+        "md:hidden fixed inset-x-0 top-[60px] bg-black/95 backdrop-blur-lg border-t border-white/10 transition-all duration-300 overflow-hidden",
+        isOpen ? "max-h-[calc(100vh-60px)] opacity-100" : "max-h-0 opacity-0"
       )}
-      style={{ top: HEADER_HEIGHT_PX }}
     >
       <div
-        className="container mx-auto px-3 py-4 flex flex-col gap-2 overflow-y-auto"
-        style={{ maxHeight: `calc(100vh - ${HEADER_HEIGHT_PX}px)` }}
+        className={cn(
+          "container mx-auto px-3 py-4 flex flex-col gap-2 transition-all duration-300 overflow-y-auto",
+          isOpen ? "translate-y-0" : "-translate-y-4"
+        )}
       >
         {dropdowns.map((group) => (
           <NavDropdown
@@ -54,8 +54,8 @@ export function MobileNav({ isOpen }: MobileNavProps) {
 
         <AuthButtons
           className="flex flex-col gap-2 pt-3"
-          loginVariant="outlineDark"
-          loginClassName="h-10 active:bg-white/20"
+          loginVariant="outline"
+          loginClassName="border-white/20 text-white hover:bg-white/10 h-10 active:bg-white/20"
           signUpClassName="h-10 active:opacity-90"
         />
       </div>

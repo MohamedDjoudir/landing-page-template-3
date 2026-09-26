@@ -27,7 +27,7 @@ export function GlowFrame({
       <div
         ref={frameRef}
         className={cn(
-          "relative bg-black/80 backdrop-blur-sm rounded-xl",
+          "relative bg-black/80 backdrop-blur-sm border border-white/10 rounded-xl",
           frameClassName
         )}
       >

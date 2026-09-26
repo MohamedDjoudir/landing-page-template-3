@@ -17,7 +17,7 @@ export function PlanFeatures({ planId }: PlanFeaturesProps) {
       {features.map((feature) => (
         <li key={feature} className="flex items-center gap-2 sm:gap-3">
           <CheckBadge
-            className="h-4 w-4 sm:h-5 sm:w-5"
+            className="flex-shrink-0 h-4 w-4 sm:h-5 sm:w-5"
             iconClassName="h-2.5 w-2.5 sm:h-3 sm:w-3"
           />
           <span className="text-white/80 text-sm sm:text-base">{feature}</span>

@@ -29,7 +29,7 @@ const STYLES = {
     button:
       "flex items-center gap-1 text-white/80 hover:text-white transition-colors py-2 px-1 rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/70 text-sm lg:text-base",
     content:
-      "absolute top-full start-0 mt-1 w-64 bg-black/90 rounded-xl overflow-hidden backdrop-blur-xl shadow-xl p-3 animate-fadeIn",
+      "absolute top-full start-0 mt-1 w-64 bg-black/90 border border-white/10 rounded-xl overflow-hidden backdrop-blur-xl shadow-xl p-3 animate-fadeIn",
     item: "flex items-center px-4 py-2.5 hover:bg-white/10 rounded-lg transition-colors",
   },
 } as const;

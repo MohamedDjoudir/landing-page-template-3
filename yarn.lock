@@ -587,30 +587,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@radix-ui/react-avatar@npm:1.2.6":
-  version: 1.2.6
-  resolution: "@radix-ui/react-avatar@npm:1.2.6"
-  dependencies:
-    "@radix-ui/primitive": "npm:1.1.7"
-    "@radix-ui/react-context": "npm:1.2.2"
-    "@radix-ui/react-primitive": "npm:2.1.10"
-    "@radix-ui/react-use-callback-ref": "npm:1.1.4"
-    "@radix-ui/react-use-is-hydrated": "npm:0.1.3"
-    "@radix-ui/react-use-layout-effect": "npm:1.1.4"
-  peerDependencies:
-    "@types/react": "*"
-    "@types/react-dom": "*"
-    react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
-    react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
-  peerDependenciesMeta:
-    "@types/react":
-      optional: true
-    "@types/react-dom":
-      optional: true
-  checksum: 10c0/e5397f3fe042a1440b19076d2dd0131c9f5e42cce6d892151225644bb794af958f508fc49005a85603bd3e55bc9cf78fe7c19685c02a1961646bf415623ab3f6
-  languageName: node
-  linkType: hard
-
 "@radix-ui/react-collapsible@npm:1.1.20":
   version: 1.1.20
   resolution: "@radix-ui/react-collapsible@npm:1.1.20"
@@ -1876,7 +1852,6 @@ __metadata:
   dependencies:
     "@emotion/is-prop-valid": "npm:1.4.0"
     "@radix-ui/react-accordion": "npm:1.2.20"
-    "@radix-ui/react-avatar": "npm:1.2.6"
     "@radix-ui/react-slot": "npm:1.3.3"
     "@radix-ui/react-tabs": "npm:1.1.21"
     "@types/node": "npm:22.20.4"

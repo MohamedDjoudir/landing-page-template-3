@@ -14,7 +14,7 @@ export function HeroImage() {
 
   return (
     <div className="flex-1 relative mt-8 lg:mt-0 max-w-[90%] sm:max-w-[80%] md:max-w-[70%] lg:max-w-full mx-auto">
-      <Reveal delay={0.2} duration={0.7} className="relative z-10">
+      <Reveal delay={0.2} duration={0.7} y={0} scale={0.9} className="relative z-10">
         <GlowFrame frameRef={parallaxRef} frameClassName="overflow-hidden">
           <Image
               src={HERO_IMAGE.src}

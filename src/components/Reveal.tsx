@@ -9,6 +9,9 @@ interface RevealProps {
   duration?: number;
   /** Fade in when scrolled into view instead of on mount. */
   inView?: boolean;
+  /** Vertical offset the element rises from. */
+  y?: number;
+  scale?: number;
   role?: string;
 }
 
@@ -18,13 +21,15 @@ export function Reveal({
   delay = 0,
   duration = 0.5,
   inView = false,
+  y = 20,
+  scale,
   role,
 }: RevealProps) {
-  const target = { opacity: 1 };
+  const target = { opacity: 1, y: 0, ...(scale !== undefined && { scale: 1 }) };
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
+      initial={{ opacity: 0, y, ...(scale !== undefined && { scale }) }}
       {...(inView
         ? { whileInView: target, viewport: { once: true } }
         : { animate: target })}

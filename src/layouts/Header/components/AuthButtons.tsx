@@ -1,11 +1,12 @@
 import { useTranslations } from "next-intl";
+import { GradientButton } from "@/components/GradientButton";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 interface AuthButtonsProps {
   className?: string;
   loginClassName?: string;
-  loginVariant?: "ghost" | "outlineDark";
+  loginVariant?: "ghost" | "outline";
   signUpClassName?: string;
 }
 
@@ -22,12 +23,11 @@ export function AuthButtons({
       <Button variant={loginVariant} className={loginClassName}>
         {t("login")}
       </Button>
-      <Button
-        variant="gradient"
+      <GradientButton
         className={cn("shadow-lg shadow-amber-500/20", signUpClassName)}
       >
         {t("getStarted")}
-      </Button>
+      </GradientButton>
     </div>
   );
 }

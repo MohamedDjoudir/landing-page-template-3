@@ -68,8 +68,8 @@ const config = {
           to: { height: "0" },
         },
         "fadeIn": {
-          from: { opacity: "0" },
-          to: { opacity: "1" },
+          from: { opacity: "0", transform: "translateY(-4px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
         },
       },
       animation: {

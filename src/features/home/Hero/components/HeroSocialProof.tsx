@@ -1,7 +1,6 @@
 import { Star } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Reveal } from "@/components/Reveal";
-import { Avatar } from "@/components/ui/avatar";
 import {
   HERO_AVATAR_COUNT,
   HERO_RATING,
@@ -14,14 +13,17 @@ export function HeroSocialProof() {
   return (
     <Reveal
       delay={0.4}
+      y={0}
       className="mt-6 sm:mt-8 flex items-center justify-center lg:justify-start gap-2 sm:gap-4 flex-wrap sm:flex-nowrap"
     >
       <div className="flex -space-x-2 rtl:space-x-reverse">
         {Array.from({ length: HERO_AVATAR_COUNT }, (_, i) => (
-          <Avatar
+          <div
             key={i}
-            className="w-6 h-6 sm:w-8 sm:h-8 border-2 border-black bg-gray-800"
-          />
+            className="w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 border-black bg-gray-800 flex items-center justify-center text-xs"
+          >
+            {i + 1}
+          </div>
         ))}
       </div>
       <div className="text-xs sm:text-sm text-white/70">

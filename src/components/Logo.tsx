@@ -7,6 +7,7 @@ interface LogoProps {
   markClassName?: string;
   innerClassName?: string;
   nameClassName?: string;
+  hoverScale?: boolean;
 }
 
 export function Logo({
@@ -14,14 +15,20 @@ export function Logo({
   markClassName,
   innerClassName,
   nameClassName,
+  hoverScale = false,
 }: LogoProps) {
   const t = useTranslations("brand");
   const name = t("name");
 
   return (
-    <Link href="/" className={cn("flex items-center", className)}>
+    <Link href="/" className={cn("flex items-center", hoverScale && "group", className)}>
       <div className={cn("relative w-10 h-10", markClassName)}>
-        <div className="absolute inset-0 bg-gradient-to-tr from-red-500 to-amber-500 rounded-lg rotate-45 transform origin-center"></div>
+        <div
+          className={cn(
+            "absolute inset-0 bg-gradient-to-tr from-red-500 to-amber-500 rounded-lg rotate-45 transform origin-center",
+            hoverScale && "group-hover:scale-105 transition-transform"
+          )}
+        ></div>
         <div
           className={cn(
             "absolute inset-[3px] bg-black rounded-lg flex items-center justify-center text-white font-bold",

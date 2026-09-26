@@ -18,7 +18,7 @@ export function FaqItem({ id, index }: FaqItemProps) {
     <Reveal inView duration={0.3} delay={index * 0.1}>
       <AccordionItem
         value={id}
-        className="bg-white/5 backdrop-blur-sm border-0 rounded-lg overflow-hidden"
+        className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg overflow-hidden"
       >
         <AccordionTrigger className="px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-lg font-medium hover:no-underline hover:bg-white/5 text-start">
           {t(`${id}.question`)}

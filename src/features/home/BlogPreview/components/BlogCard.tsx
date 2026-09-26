@@ -17,7 +17,7 @@ export function BlogCard({ article, index }: BlogCardProps) {
 
   return (
     <Reveal inView delay={index * 0.1} className="group">
-      <div className="bg-white/5 hover:bg-white/10 backdrop-blur-sm rounded-xl overflow-hidden h-full flex flex-col transition-colors">
+      <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden h-full flex flex-col hover:border-white/20 transition-all">
         <BlogCardImage
           image={article.image}
           title={title}

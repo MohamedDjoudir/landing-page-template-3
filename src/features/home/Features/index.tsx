@@ -13,7 +13,7 @@ import { useFeaturesTabs } from "./hooks";
 
 export default function Features() {
   const t = useTranslations("features");
-  const { activeTab, setActiveTab } = useFeaturesTabs();
+  const { activeTab, setActiveTab, mounted } = useFeaturesTabs();
 
   return (
     <section
@@ -37,7 +37,7 @@ export default function Features() {
         >
           <FeaturesTabs />
           <MobileFeatureTitle activeTab={activeTab} />
-          <FeatureContent />
+          <FeatureContent mounted={mounted} />
         </Tabs>
       </div>
     </section>

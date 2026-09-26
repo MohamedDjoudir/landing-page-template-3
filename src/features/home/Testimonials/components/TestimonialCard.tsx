@@ -29,7 +29,7 @@ export function TestimonialCard({
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0, x: -100 * sign }}
         transition={{ duration: 0.5 }}
-        className="bg-white/5 backdrop-blur-sm rounded-2xl p-5 sm:p-8 md:p-12"
+        className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-5 sm:p-8 md:p-12"
         aria-live="polite"
         role="group"
         aria-roledescription={t("slide")}

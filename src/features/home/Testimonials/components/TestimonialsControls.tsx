@@ -31,7 +31,7 @@ export function TestimonialsControls({
         aria-label={t("navigation")}
       >
         <Button
-          variant="outlineDark"
+          variant="outline"
           size="icon"
           onClick={onPrev}
           className={ARROW_BUTTON_CLASS}
@@ -40,7 +40,7 @@ export function TestimonialsControls({
           <ChevronLeft className={ARROW_ICON_CLASS} aria-hidden="true" />
         </Button>
         <Button
-          variant="outlineDark"
+          variant="outline"
           size="icon"
           onClick={onNext}
           className={ARROW_BUTTON_CLASS}

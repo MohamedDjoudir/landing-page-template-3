@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import { Reveal } from "@/components/Reveal";
+import { GRADIENT_BUTTON_CLASS } from "@/components/GradientButton";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import type { Plan } from "../types";
@@ -29,8 +30,8 @@ export function PricingCard({ plan, index, annual }: PricingCardProps) {
 
       <div
         className={cn(
-          "h-full bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden transition-transform",
-          plan.popular && "border border-amber-500"
+          "h-full bg-white/5 backdrop-blur-sm border rounded-2xl overflow-hidden transition-transform",
+          plan.popular ? "border-amber-500" : "border-white/10"
         )}
       >
         <div className="p-5 sm:p-8">
@@ -45,10 +46,11 @@ export function PricingCard({ plan, index, annual }: PricingCardProps) {
           />
 
           <Button
-            variant={plan.popular ? "gradient" : "secondary"}
             className={cn(
               "w-full mb-6 sm:mb-8 py-2 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black focus:outline-none",
-              !plan.popular && "bg-white/10 hover:bg-white/20 text-white"
+              plan.popular
+                ? GRADIENT_BUTTON_CLASS
+                : "bg-white/10 hover:bg-white/20 text-white"
             )}
             aria-label={t("ctaLabel", { cta, plan: name })}
           >

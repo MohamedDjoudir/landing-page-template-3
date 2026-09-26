@@ -14,7 +14,7 @@ export function BillingToggle({ annual, onChange }: BillingToggleProps) {
 
   return (
     <div className="relative flex items-center justify-center mt-6 sm:mt-8">
-      <fieldset className="bg-white/5 backdrop-blur-sm p-1 rounded-full">
+      <fieldset className="bg-white/5 backdrop-blur-sm border border-white/10 p-1 rounded-full">
         <legend className="sr-only">{t("billingFrequency")}</legend>
         <div className="relative flex">
           <button

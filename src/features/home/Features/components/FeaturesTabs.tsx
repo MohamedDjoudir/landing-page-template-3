@@ -7,7 +7,7 @@ export function FeaturesTabs() {
 
   return (
     <div className="flex justify-center mb-6 sm:mb-8 overflow-x-auto pb-3 sm:pb-0 scrollbar-hide">
-      <TabsList className="bg-white/5 backdrop-blur-sm p-1 rounded-xl flex-nowrap">
+      <TabsList className="bg-white/5 backdrop-blur-sm border border-white/10 p-1 rounded-xl flex-nowrap">
         {FEATURES.map(({ id, icon: Icon }) => (
           <TabsTrigger
             key={id}

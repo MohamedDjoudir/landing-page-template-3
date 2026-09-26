@@ -1,14 +1,19 @@
 import { useTranslations } from "next-intl";
 import { TabsContent } from "@/components/ui/tabs";
+import { cn } from "@/lib/utils";
 import { FEATURES } from "../constants";
 import { FeatureDescription } from "./FeatureDescription";
 import { FeatureImage } from "./FeatureImage";
 
-export function FeatureContent() {
+interface FeatureContentProps {
+  mounted: boolean;
+}
+
+export function FeatureContent({ mounted }: FeatureContentProps) {
   const t = useTranslations("features.items");
 
   return (
-    <div className="relative min-h-[400px]">
+    <div className={cn("relative", mounted && "min-h-[400px]")}>
       {FEATURES.map((feature) => (
         <TabsContent
           key={feature.id}

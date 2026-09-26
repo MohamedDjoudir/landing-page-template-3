@@ -17,13 +17,11 @@
 
 ```sh
 yarn install
-yarn dev        # http://localhost:3030
+yarn dev
 yarn build      # production build
-yarn start      # serve the production build on http://localhost:3030
+yarn start      # serve the production build
 yarn lint
 ```
-
-The port is set in the `dev` and `start` scripts in `package.json`.
 
 There are no environment variables to configure: the template is a static landing page with no back-end.
 
@@ -60,7 +58,7 @@ src/
 ├── i18n/                   # routing, request config, locale-aware navigation, text direction
 ├── middleware.ts           # locale negotiation
 ├── components/             # Shared components (Logo, Reveal, SectionHeader, GlowFrame, LocaleSwitcher...)
-│   └── ui/                 # UI primitives (Button, Accordion, Tabs, Avatar)
+│   └── ui/                 # UI primitives (Button, Accordion, Tabs)
 ├── features/home/          # One folder per page section
 │   └── <Section>/
 │       ├── index.tsx       # Composition only
@@ -91,8 +89,7 @@ Barrel `index.ts` files only re-export.
 
 - **Tailwind CSS** with CSS variables for theme colors in `globals.css`.
 - **Dark mode** through `next-themes`.
-- Cards separate from the page by fill, not by borders.
-- Entrance animations only fade (through the shared `Reveal` component); nothing slides up or zooms.
+- Entrance animations go through the shared `Reveal` component.
 
 ---
 
@@ -105,7 +102,7 @@ Barrel `index.ts` files only re-export.
 | TypeScript     | Type safety                     |
 | Tailwind CSS   | Utility-first styling           |
 | Framer Motion  | Animations                      |
-| Radix UI       | Accordion, Tabs, Avatar         |
+| Radix UI       | Accordion, Tabs                 |
 | Lucide React   | Icons                           |
 | next-themes    | Theme management                |
 | Embla Carousel | Mobile carousels                |

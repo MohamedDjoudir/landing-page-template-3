@@ -14,7 +14,7 @@ export function IntegrationCard({ integration, index }: IntegrationCardProps) {
   return (
     <Reveal inView duration={0.3} delay={index * 0.05} role="listitem">
       <div
-        className="bg-white/5 hover:bg-white/10 backdrop-blur-sm rounded-lg p-2 sm:p-3 md:p-4 flex flex-col items-center justify-center h-full transition-colors focus-within:ring-2 focus-within:ring-white"
+        className="bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg p-2 sm:p-3 md:p-4 flex flex-col items-center justify-center h-full transition-colors focus-within:ring-2 focus-within:ring-white"
         tabIndex={0}
       >
         <div

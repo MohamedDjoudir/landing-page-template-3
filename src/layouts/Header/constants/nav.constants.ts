@@ -1,4 +1,3 @@
-export const HEADER_HEIGHT_PX = 60;
 export const SCROLLED_THRESHOLD_PX = 20;
 export const DROPDOWN_CLOSE_DELAY_MS = 150;
 

@@ -20,7 +20,7 @@ export function HeroStatusBadge({
     <Reveal
       delay={delay}
       className={cn(
-        "absolute bg-black/50 backdrop-blur-md rounded-lg p-2 sm:p-3 shadow-lg hidden xs:flex",
+        "absolute bg-black/50 backdrop-blur-md border border-white/10 rounded-lg p-2 sm:p-3 shadow-lg hidden xs:flex",
         className
       )}
     >

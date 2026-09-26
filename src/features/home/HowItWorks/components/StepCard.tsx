@@ -31,10 +31,10 @@ export function StepCard({ step, index, isLast }: StepCardProps) {
             alt={title}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-            className="object-cover"
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
             priority={index < 2}
           />
-          <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors duration-500"></div>
+          <div className="absolute inset-0 bg-black/50"></div>
           <StepBadge
             number={step.number}
             className="top-4 start-4 w-10 h-10 sm:w-12 sm:h-12 text-lg sm:text-xl"

@@ -41,10 +41,9 @@ export function FeatureDescription({ feature }: FeatureDescriptionProps) {
             key={benefit}
             className="flex items-center gap-2 text-sm sm:text-base"
           >
-            <CheckBadge
-              className="h-4 w-4 sm:h-5 sm:w-5"
-              iconClassName="h-2.5 w-2.5 sm:h-3 sm:w-3"
-            />
+            <CheckBadge className="h-4 w-4 sm:h-5 sm:w-5 text-xs font-bold">
+              ✓
+            </CheckBadge>
             <span>{benefit}</span>
           </li>
         ))}

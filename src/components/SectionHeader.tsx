@@ -8,6 +8,7 @@ interface SectionHeaderProps {
   className?: string;
   titleClassName?: string;
   subtitleClassName?: string;
+  children?: React.ReactNode;
 }
 
 export function SectionHeader({
@@ -17,6 +18,7 @@ export function SectionHeader({
   className,
   titleClassName,
   subtitleClassName,
+  children,
 }: SectionHeaderProps) {
   return (
     <Reveal inView className={cn("text-center", className)}>
@@ -37,6 +39,7 @@ export function SectionHeader({
       >
         {subtitle}
       </p>
+      {children}
     </Reveal>
   );
 }
