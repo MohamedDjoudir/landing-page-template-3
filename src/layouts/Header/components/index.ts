@@ -1,4 +1,6 @@
-export { default as Logo } from './Logo'
-export { default as DesktopNav } from './DesktopNav'
-export { default as MobileNav } from './MobileNav'
-export { default as NavDropdown } from './NavDropdown'
+export { HeaderLogo } from "./HeaderLogo";
+export { DesktopNav } from "./DesktopNav";
+export { MobileNav } from "./MobileNav";
+export { NavDropdown } from "./NavDropdown";
+export { AuthButtons } from "./AuthButtons";
+export { MenuToggle } from "./MenuToggle";

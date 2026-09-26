@@ -1,12 +1,10 @@
-"use client";
-
 import { Quote } from "lucide-react";
 
 export function QuoteIcon() {
   return (
     <>
       <div
-        className="absolute -top-12 -left-12 text-red-500/20 hidden sm:block"
+        className="absolute -top-12 -start-12 text-red-500/20 hidden sm:block rtl:-scale-x-100"
         aria-hidden="true"
       >
         <Quote size={80} />

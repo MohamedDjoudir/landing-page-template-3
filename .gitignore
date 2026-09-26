@@ -27,7 +27,6 @@ yarn-error.log*
 next-env.d.ts
 
 # yarn
-yarn.lock
 .yarn/
 
 # npm

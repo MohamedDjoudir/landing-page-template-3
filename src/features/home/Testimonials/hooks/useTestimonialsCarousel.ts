@@ -1,44 +1,42 @@
-import { useState, useEffect } from "react";
-import { testimonialsConfig } from "../config/testimonials.config";
+import { useCallback, useEffect, useState } from "react";
+import { AUTOPLAY_INTERVAL_MS, TESTIMONIALS } from "../constants";
 
 export function useTestimonialsCarousel() {
-    const [current, setCurrent] = useState(0);
-    const [autoplay, setAutoplay] = useState(true);
-    const total = testimonialsConfig.testimonials.length;
+  const total = TESTIMONIALS.length;
+  const [current, setCurrent] = useState(0);
+  const [autoplay, setAutoplay] = useState(true);
 
-    useEffect(() => {
-        if (!autoplay) return;
+  useEffect(() => {
+    if (!autoplay) return;
 
-        const interval = setInterval(() => {
-            setCurrent((prev) => (prev + 1) % total);
-        }, 5000);
+    const interval = setInterval(() => {
+      setCurrent((index) => (index + 1) % total);
+    }, AUTOPLAY_INTERVAL_MS);
 
-        return () => clearInterval(interval);
-    }, [autoplay, total]);
+    return () => clearInterval(interval);
+  }, [autoplay, total]);
 
-    const next = () => {
-        setAutoplay(false);
-        setCurrent((prev) => (prev + 1) % total);
-    };
+  const next = useCallback(() => {
+    setAutoplay(false);
+    setCurrent((index) => (index + 1) % total);
+  }, [total]);
 
-    const prev = () => {
-        setAutoplay(false);
-        setCurrent((prev) => (prev - 1 + total) % total);
-    };
+  const prev = useCallback(() => {
+    setAutoplay(false);
+    setCurrent((index) => (index - 1 + total) % total);
+  }, [total]);
 
-    const goTo = (index: number) => {
-        setAutoplay(false);
-        setCurrent(index);
-    };
+  const goTo = useCallback((index: number) => {
+    setAutoplay(false);
+    setCurrent(index);
+  }, []);
 
-    const testimonial = testimonialsConfig.testimonials[current];
-
-    return {
-        current,
-        total,
-        testimonial,
-        next,
-        prev,
-        goTo,
-    };
+  return {
+    current,
+    total,
+    testimonial: TESTIMONIALS[current],
+    next,
+    prev,
+    goTo,
+  };
 }

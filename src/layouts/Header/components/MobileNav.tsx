@@ -1,51 +1,46 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import NavDropdown from "./NavDropdown";
+import { Link } from "@/i18n/navigation";
+import { LocaleSwitcher } from "@/components/LocaleSwitcher";
 import { cn } from "@/lib/utils";
-import { siteConfig } from "@/config";
+import { HEADER_HEIGHT_PX } from "../constants";
+import { useActiveDropdown, useNavItems } from "../hooks";
+import { AuthButtons } from "./AuthButtons";
+import { NavDropdown } from "./NavDropdown";
 
-type MobileNavProps = {
+interface MobileNavProps {
   isOpen: boolean;
-};
+}
 
-export default function MobileNav({ isOpen }: MobileNavProps) {
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+export function MobileNav({ isOpen }: MobileNavProps) {
+  const { dropdowns, links } = useNavItems();
+  const { activeId, open, close, toggle } = useActiveDropdown();
 
   return (
     <div
       className={cn(
-        "md:hidden fixed inset-x-0 top-[60px] bg-black/95 backdrop-blur-lg border-t border-white/10 transition-all duration-300 overflow-hidden",
-        isOpen ? "max-h-[calc(100vh-60px)] opacity-100" : "max-h-0 opacity-0"
+        "md:hidden fixed inset-x-0 bg-black/95 backdrop-blur-lg border-t border-white/10 transition-opacity duration-300",
+        isOpen ? "opacity-100" : "opacity-0 invisible pointer-events-none"
       )}
+      style={{ top: HEADER_HEIGHT_PX }}
     >
       <div
-        className={cn(
-          "container mx-auto px-3 py-4 flex flex-col gap-2 transition-all duration-300 overflow-y-auto",
-          isOpen ? "translate-y-0" : "-translate-y-4"
-        )}
+        className="container mx-auto px-3 py-4 flex flex-col gap-2 overflow-y-auto"
+        style={{ maxHeight: `calc(100vh - ${HEADER_HEIGHT_PX}px)` }}
       >
-        <NavDropdown
-          id="mobileProducts"
-          label="Products"
-          items={siteConfig.productItems}
-          isMobile={true}
-          activeDropdown={activeDropdown}
-          setActiveDropdown={setActiveDropdown}
-        />
+        {dropdowns.map((group) => (
+          <NavDropdown
+            key={group.id}
+            group={group}
+            isMobile
+            isOpen={activeId === group.id}
+            onOpen={() => open(group.id)}
+            onClose={close}
+            onToggle={() => toggle(group.id)}
+          />
+        ))}
 
-        <NavDropdown
-          id="mobileSolutions"
-          label="Solutions"
-          items={siteConfig.solutionItems}
-          isMobile={true}
-          activeDropdown={activeDropdown}
-          setActiveDropdown={setActiveDropdown}
-        />
-
-        {siteConfig.navLinks.map((link) => (
+        {links.map((link) => (
           <Link
             key={link.href}
             href={link.href}
@@ -55,17 +50,14 @@ export default function MobileNav({ isOpen }: MobileNavProps) {
           </Link>
         ))}
 
-        <div className="flex flex-col gap-2 pt-3">
-          <Button
-            variant="outline"
-            className="border-white/20 text-white hover:bg-white/10 h-10 active:bg-white/20"
-          >
-            Log in
-          </Button>
-          <Button className="bg-gradient-to-r from-red-500 to-amber-500 hover:from-red-600 hover:to-amber-600 text-white border-0 h-10 shadow-lg shadow-amber-500/20 active:opacity-90">
-            Get Started
-          </Button>
-        </div>
+        <LocaleSwitcher className="self-start" />
+
+        <AuthButtons
+          className="flex flex-col gap-2 pt-3"
+          loginVariant="outlineDark"
+          loginClassName="h-10 active:bg-white/20"
+          signUpClassName="h-10 active:opacity-90"
+        />
       </div>
     </div>
   );

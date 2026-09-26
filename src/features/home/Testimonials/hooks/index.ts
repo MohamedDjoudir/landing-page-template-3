@@ -1,0 +1,1 @@
+export { useTestimonialsCarousel } from "./useTestimonialsCarousel";

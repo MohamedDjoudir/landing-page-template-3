@@ -1,37 +1,43 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+import { SectionBackground } from "@/components/SectionBackground";
+import { SectionHeader } from "@/components/SectionHeader";
 import { Tabs } from "@/components/ui/tabs";
 import {
-  FeaturesBackground,
-  FeaturesHeader,
   FeaturesTabs,
   MobileFeatureTitle,
   FeatureContent,
 } from "./components";
-import { useFeaturesTabs } from "./hooks/useFeaturesTabs";
+import { useFeaturesTabs } from "./hooks";
 
 export default function Features() {
-  const { activeTab, handleTabChange, contentStyle } = useFeaturesTabs();
+  const t = useTranslations("features");
+  const { activeTab, setActiveTab } = useFeaturesTabs();
 
   return (
     <section
       id="features"
       className="py-12 px-4 sm:py-16 md:py-24 bg-black relative"
     >
-      <FeaturesBackground />
+      <SectionBackground redSide="end" />
 
       <div className="container mx-auto relative z-10">
-        <FeaturesHeader />
+        <SectionHeader
+          title={t("title")}
+          subtitle={t("subtitle")}
+          className="mb-8 sm:mb-12"
+          subtitleClassName="text-sm sm:text-base md:text-lg"
+        />
 
         <Tabs
-          defaultValue="analytics"
           value={activeTab}
-          onValueChange={handleTabChange}
+          onValueChange={setActiveTab}
           className="w-full"
         >
           <FeaturesTabs />
           <MobileFeatureTitle activeTab={activeTab} />
-          <FeatureContent contentStyle={contentStyle} />
+          <FeatureContent />
         </Tabs>
       </div>
     </section>

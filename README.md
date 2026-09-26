@@ -1,349 +1,125 @@
-# NOVA – Business Case Studies Template (Next.js + Tailwind CSS)
+# NOVA: Business Case Studies Template (Next.js + Tailwind CSS)
 
 **NOVA** is a professional and elegant template built with **Next.js 15**, **TypeScript**, and **Tailwind CSS**, designed to showcase detailed business case studies, client success stories, and project highlights. Perfect for consultancies, agencies, and SaaS businesses.
 
-🔗 **Live Demo & More Info:** [aniq-ui.com NOVA Template](https://www.aniq-ui.com/en/templates/business-case-studies-nextjs-template)
+**Live Demo & More Info:** [aniq-ui.com NOVA Template](https://www.aniq-ui.com/en/templates/business-case-studies-nextjs-template)
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
 - Node.js 18.17 or later
-- npm, yarn, or pnpm
+- Yarn (the repository pins Yarn 4 through `packageManager`; run `corepack enable`)
 
 ### Installation
 
-1. **Clone the repository**
+```sh
+yarn install
+yarn dev        # http://localhost:3030
+yarn build      # production build
+yarn start      # serve the production build on http://localhost:3030
+yarn lint
+```
 
-   ```sh
-   git clone <repository-url>
-   cd landing-page-template-3
-   ```
+The port is set in the `dev` and `start` scripts in `package.json`.
 
-2. **Install dependencies**
-
-   ```sh
-   npm install
-   # or
-   yarn install
-   # or
-   pnpm install
-   ```
-
-3. **Start the development server**
-
-   ```sh
-   npm run dev
-   ```
-
-   Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-4. **Build for production**
-
-   ```sh
-   npm run build
-   npm start
-   ```
+There are no environment variables to configure: the template is a static landing page with no back-end.
 
 ---
 
-## 🧠 Project Structure
+## Languages
 
-This project follows a **feature-based architecture** with modular, reusable components:
+The site is localized with **next-intl** and ships two locales:
+
+| Locale | Language | Direction |
+| ------ | -------- | --------- |
+| `en`   | English (default) | LTR |
+| `ar`   | Arabic   | RTL |
+
+- Routes are prefixed with the locale: `/en`, `/ar`.
+- `src/middleware.ts` redirects `/` to the default locale.
+- `<html lang dir>` is set from the locale, and layout uses logical Tailwind classes (`ms-*`, `pe-*`, `start-*`, `text-start`...) so RTL mirrors automatically.
+- All copy lives in `messages/en.json` and `messages/ar.json`. Both files must keep the same keys.
+- Components read text with `useTranslations`; constants only hold keys, ids, routes, icons and numbers.
+- A locale switcher sits in the header (`src/components/LocaleSwitcher.tsx`).
+
+To add a locale, add its code to `src/i18n/routing.ts`, create `messages/<locale>.json`, and add the locale name under `localeSwitcher.names` in every messages file. If it is right-to-left, list it in `src/i18n/direction.ts`.
+
+---
+
+## Project Structure
 
 ```
+messages/                   # en.json, ar.json
 src/
-├── app/                    # Next.js App Router
-│   ├── layout.tsx          # Root layout with providers
-│   ├── page.tsx            # Home page
-│   └── globals.css         # Global styles
-│
-├── components/             # Shared/Reusable components
-│   └── ui/                 # UI primitives (Button, Accordion, Tabs, etc.)
-│
-├── config/                 # App configuration
-│   └── site.config.ts      # Site-wide settings (nav, footer, social links)
-│
-├── features/               # Page-specific features (organized by page)
-│   ├── index.ts            # Feature exports
-│   └── home/               # Home page features
-│       ├── Hero/
-│       │   ├── index.tsx
-│       │   ├── components/
-│       │   └── config/
-│       ├── SocialProof/
-│       ├── Features/
-│       ├── HowItWorks/
-│       ├── Testimonials/
-│       ├── Pricing/
-│       ├── Integrations/
-│       ├── BlogPreview/
-│       ├── Faq/
-│       └── Cta/
-│
-├── hooks/                  # Global custom hooks
-│   └── use-mobile.tsx      # Mobile detection hook
-│
-├── layouts/                # Layout components
-│   ├── Header/
-│   │   ├── index.tsx
-│   │   └── components/     # Logo, DesktopNav, MobileNav, NavDropdown
-│   └── Footer/
-│       ├── index.tsx
-│       ├── components/     # FooterLogo, FooterNav, SocialLinks
-│       └── config/
-│
-├── lib/                    # Utility functions
-│   └── utils.ts            # cn() helper for Tailwind classes
-│
-└── providers/              # React context providers
-    └── index.tsx           # ThemeProvider setup
+├── app/
+│   ├── globals.css
+│   └── [locale]/           # layout.tsx (html, providers, metadata) and page.tsx (home composition)
+├── i18n/                   # routing, request config, locale-aware navigation, text direction
+├── middleware.ts           # locale negotiation
+├── components/             # Shared components (Logo, Reveal, SectionHeader, GlowFrame, LocaleSwitcher...)
+│   └── ui/                 # UI primitives (Button, Accordion, Tabs, Avatar)
+├── features/home/          # One folder per page section
+│   └── <Section>/
+│       ├── index.tsx       # Composition only
+│       ├── components/     # One component per file + index.ts barrel
+│       ├── hooks/          # One hook per file + index.ts barrel
+│       ├── constants/      # Keys, ids, images, numbers
+│       └── types/
+├── layouts/                # Header and Footer, same subfolder convention
+├── hooks/                  # Shared hooks (useTextDirection)
+├── lib/utils.ts            # cn() helper
+└── providers/              # ThemeProvider
 ```
+
+Barrel `index.ts` files only re-export.
 
 ---
 
-## 📄 Adding a New Page
+## Adding a Section or Page
 
-Follow these steps to add a new page (e.g., `/about`):
-
-### Step 1: Create the Page Route
-
-Create a new file in `src/app/`:
-
-```tsx
-// src/app/about/page.tsx
-import { AboutHero, AboutTeam, AboutValues } from "@/features/about";
-
-export default function AboutPage() {
-  return (
-    <main>
-      <AboutHero />
-      <AboutValues />
-      <AboutTeam />
-    </main>
-  );
-}
-```
-
-### Step 2: Create the Features Folder
-
-Create the feature folder structure:
-
-```
-src/features/about/
-├── index.ts              # Export all features
-├── AboutHero/
-│   ├── index.tsx         # Main component
-│   ├── components/       # Sub-components
-│   └── config/           # Feature-specific configuration
-├── AboutTeam/
-│   ├── index.tsx
-│   └── components/
-└── AboutValues/
-    └── index.tsx
-```
-
-### Step 3: Create a Feature Component
-
-Example feature component:
-
-```tsx
-// src/features/about/AboutHero/index.tsx
-"use client";
-
-import { motion } from "framer-motion";
-
-export default function AboutHero() {
-  return (
-    <section className="min-h-screen flex items-center justify-center bg-black">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="text-center"
-      >
-        <h1 className="text-4xl font-bold">About Us</h1>
-        <p className="text-white/70">We are Nova</p>
-      </motion.div>
-    </section>
-  );
-}
-```
-
-### Step 4: Export from Feature Index
-
-```tsx
-// src/features/about/index.ts
-export { default as AboutHero } from "./AboutHero";
-export { default as AboutTeam } from "./AboutTeam";
-export { default as AboutValues } from "./AboutValues";
-```
-
-### Step 5: Add to Main Features Export
-
-```tsx
-// src/features/index.ts
-// Home features
-export {
-  Hero,
-  SocialProof,
-  Features,
-  HowItWorks,
-  Testimonials,
-  Pricing,
-  Integrations,
-  BlogPreview,
-  Faq,
-  Cta,
-} from "./home";
-
-// About features
-export { AboutHero, AboutTeam, AboutValues } from "./about";
-```
-
-### Step 6: Update Navigation (Optional)
-
-Add the new page to `src/config/site.config.ts`:
-
-```tsx
-export const siteConfig = {
-  navLinks: [
-    { label: "Pricing", href: "#pricing" },
-    { label: "Testimonials", href: "#testimonials" },
-    { label: "About", href: "/about" }, // Add new link
-  ],
-};
-```
+1. Create the section folder under `src/features/<page>/<Section>/` using the layout above.
+2. Add its copy to **both** `messages/en.json` and `messages/ar.json`, and read it with `useTranslations("<namespace>")`.
+3. Compose it in `src/app/[locale]/<route>/page.tsx`. Call `setRequestLocale(locale)` at the top of a page so it stays statically rendered.
+4. Use logical spacing classes and add `rtl:rotate-180` to arrows and chevrons that point in a reading direction.
 
 ---
 
-## 🧩 Component Architecture
+## Styling
 
-### UI Components (`src/components/ui/`)
-
-Reusable, stateless UI primitives:
-
-- `Button` - Styled button with variants
-- `Accordion` - Expandable content sections
-- `Tabs` - Tabbed content navigation
-
-### Layout Components (`src/layouts/`)
-
-```
-src/layouts/Header/
-├── index.tsx           # Main Header component
-└── components/
-    ├── Logo.tsx
-    ├── DesktopNav.tsx
-    ├── MobileNav.tsx
-    └── NavDropdown.tsx
-```
-
-### Feature Components
-
-Each feature follows this pattern:
-
-```
-src/features/home/Hero/
-├── index.tsx           # Main export (composition only)
-├── components/         # Sub-components (HeroBadge, HeroTitle, etc.)
-└── config/             # Feature-specific configuration
-    └── hero.config.ts
-```
+- **Tailwind CSS** with CSS variables for theme colors in `globals.css`.
+- **Dark mode** through `next-themes`.
+- Cards separate from the page by fill, not by borders.
+- Entrance animations only fade (through the shared `Reveal` component); nothing slides up or zooms.
 
 ---
 
-## 🎨 Styling
-
-- **Tailwind CSS** - Utility-first CSS framework
-- **CSS Variables** - Theme colors defined in `globals.css`
-- **Dark Mode** - Supported via `next-themes`
-- **Custom Utilities** - `cn()` helper for conditional classes
-
-```tsx
-import { cn } from "@/lib/utils";
-
-<div className={cn("base-class", isActive && "active-class")} />;
-```
-
----
-
-## 🔧 Configuration
-
-### Site Config (`src/config/site.config.ts`)
-
-Centralized configuration for:
-
-- Navigation links
-- Product/Solutions dropdown items
-- Footer links
-- Social media links
-- Site metadata
-
-### TypeScript Paths
-
-Path aliases configured in `tsconfig.json`:
-
-```json
-{
-  "compilerOptions": {
-    "paths": {
-      "@/*": ["./src/*"]
-    }
-  }
-}
-```
-
-Usage:
-
-```tsx
-import { Button } from "@/components/ui/button";
-import { Hero } from "@/features/home";
-import { cn } from "@/lib/utils";
-import { Header, Footer } from "@/layouts";
-```
-
----
-
-## 🌟 Features
-
-- ✨ **Next.js 15** with App Router
-- 📝 **TypeScript** for type safety
-- 🎨 **Tailwind CSS** for styling
-- 🎭 **Framer Motion** for animations
-- 🌙 **Dark Mode** support
-- 📱 **Fully Responsive** design
-- 🧩 **Modular Architecture** for scalability
-- 🔄 **Feature-based Structure** for maintainability
-- ⚙️ **Config-driven Content** for easy customization
-
----
-
-## 📦 Tech Stack
+## Tech Stack
 
 | Technology     | Purpose                         |
 | -------------- | ------------------------------- |
 | Next.js 15     | React framework with App Router |
+| next-intl      | Localization (en, ar)           |
 | TypeScript     | Type safety                     |
 | Tailwind CSS   | Utility-first styling           |
 | Framer Motion  | Animations                      |
+| Radix UI       | Accordion, Tabs, Avatar         |
 | Lucide React   | Icons                           |
 | next-themes    | Theme management                |
 | Embla Carousel | Mobile carousels                |
 
+All dependencies are pinned to exact versions and `yarn.lock` is committed.
+
 ---
 
-## 💬 Support
+## Support
 
 For questions or support, contact the [Aniq UI team](https://www.aniq-ui.com/#contact).
 
----
+## License
 
-## 📝 License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-Created by [Aniq UI](https://www.aniq-ui.com) — Premium Next.js Templates for modern web apps.
+Created by [Aniq UI](https://www.aniq-ui.com), premium Next.js templates for modern web apps.

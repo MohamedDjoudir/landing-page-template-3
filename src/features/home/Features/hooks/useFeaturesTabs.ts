@@ -1,39 +1,7 @@
-import { useState, useEffect } from "react";
-import { useIsMobile } from "@/hooks/use-mobile";
+import { useState } from "react";
+import { DEFAULT_FEATURE_ID } from "../constants";
 
 export function useFeaturesTabs() {
-    const [activeTab, setActiveTab] = useState("analytics");
-    const isMobile = useIsMobile();
-    const [mounted, setMounted] = useState(false);
-
-    useEffect(() => {
-        setMounted(true);
-    }, []);
-
-    const handleTabChange = (value: string) => {
-        setActiveTab(value);
-
-        if (isMobile && mounted) {
-            setTimeout(() => {
-                const element = document.getElementById(`${value}-content`);
-                if (element) {
-                    const yOffset = -80;
-                    const y =
-                        element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-                    window.scrollTo({ top: y, behavior: "smooth" });
-                }
-            }, 100);
-        }
-    };
-
-    const contentStyle = {
-        minHeight: mounted ? "400px" : "auto",
-    };
-
-    return {
-        activeTab,
-        handleTabChange,
-        contentStyle,
-        mounted,
-    };
+  const [activeTab, setActiveTab] = useState(DEFAULT_FEATURE_ID);
+  return { activeTab, setActiveTab };
 }

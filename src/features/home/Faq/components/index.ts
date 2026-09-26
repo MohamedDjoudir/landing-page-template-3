@@ -1,4 +1,3 @@
-export { FaqBackground } from "./FaqBackground";
-export { FaqHeader } from "./FaqHeader";
+export { FaqItem } from "./FaqItem";
 export { FaqList } from "./FaqList";
 export { FaqFooter } from "./FaqFooter";

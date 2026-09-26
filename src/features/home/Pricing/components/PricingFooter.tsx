@@ -1,13 +1,11 @@
-"use client";
-
-import { pricingConfig } from "../config/plans.config";
+import { useTranslations } from "next-intl";
 
 export function PricingFooter() {
+  const t = useTranslations("pricing");
+
   return (
     <div className="mt-10 sm:mt-16 text-center">
-      <p className="text-white/70 text-sm sm:text-base">
-        {pricingConfig.trialInfo}
-      </p>
+      <p className="text-white/70 text-sm sm:text-base">{t("trialInfo")}</p>
     </div>
   );
 }

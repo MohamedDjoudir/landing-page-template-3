@@ -1,7 +1,7 @@
-"use client";
-
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
+import { TestimonialsDots } from "./TestimonialsDots";
 
 interface TestimonialsControlsProps {
   onPrev: () => void;
@@ -11,6 +11,10 @@ interface TestimonialsControlsProps {
   onDotClick: (index: number) => void;
 }
 
+const ARROW_BUTTON_CLASS =
+  "h-8 w-8 sm:h-10 sm:w-10 rounded-full border-white/10 hover:bg-white/10 focus:ring-2 focus:ring-white focus:outline-none";
+const ARROW_ICON_CLASS = "h-4 w-4 sm:h-5 sm:w-5 rtl:rotate-180";
+
 export function TestimonialsControls({
   onPrev,
   onNext,
@@ -18,29 +22,31 @@ export function TestimonialsControls({
   total,
   onDotClick,
 }: TestimonialsControlsProps) {
+  const t = useTranslations("testimonials");
+
   return (
     <>
       <div
         className="flex justify-center mt-6 sm:mt-8 gap-3 sm:gap-4"
-        aria-label="Testimonial navigation"
+        aria-label={t("navigation")}
       >
         <Button
-          variant="outline"
+          variant="outlineDark"
           size="icon"
           onClick={onPrev}
-          className="h-8 w-8 sm:h-10 sm:w-10 rounded-full border-white/10 hover:bg-white/10 focus:ring-2 focus:ring-white focus:outline-none"
-          aria-label="Previous testimonial"
+          className={ARROW_BUTTON_CLASS}
+          aria-label={t("previous")}
         >
-          <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
+          <ChevronLeft className={ARROW_ICON_CLASS} aria-hidden="true" />
         </Button>
         <Button
-          variant="outline"
+          variant="outlineDark"
           size="icon"
           onClick={onNext}
-          className="h-8 w-8 sm:h-10 sm:w-10 rounded-full border-white/10 hover:bg-white/10 focus:ring-2 focus:ring-white focus:outline-none"
-          aria-label="Next testimonial"
+          className={ARROW_BUTTON_CLASS}
+          aria-label={t("next")}
         >
-          <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
+          <ChevronRight className={ARROW_ICON_CLASS} aria-hidden="true" />
         </Button>
       </div>
 
@@ -50,33 +56,5 @@ export function TestimonialsControls({
         onDotClick={onDotClick}
       />
     </>
-  );
-}
-
-function TestimonialsDots({
-  current,
-  total,
-  onDotClick,
-}: {
-  current: number;
-  total: number;
-  onDotClick: (index: number) => void;
-}) {
-  return (
-    <div className="flex justify-center mt-4 sm:mt-6">
-      {[...Array(total)].map((_, idx) => (
-        <button
-          key={idx}
-          onClick={() => onDotClick(idx)}
-          className={`w-1.5 h-1.5 sm:w-2 sm:h-2 mx-1 rounded-full focus:outline-none focus:ring-2 focus:ring-white ${
-            current === idx
-              ? "bg-gradient-to-r from-red-500 to-amber-500"
-              : "bg-white/20"
-          }`}
-          aria-label={`Go to testimonial ${idx + 1}`}
-          aria-current={current === idx ? "true" : "false"}
-        />
-      ))}
-    </div>
   );
 }

@@ -1,5 +1,5 @@
-export { FeaturesBackground } from "./FeaturesBackground";
-export { FeaturesHeader } from "./FeaturesHeader";
+export { FeatureImage } from "./FeatureImage";
+export { FeatureDescription } from "./FeatureDescription";
+export { FeatureContent } from "./FeatureContent";
 export { FeaturesTabs } from "./FeaturesTabs";
 export { MobileFeatureTitle } from "./MobileFeatureTitle";
-export { FeatureContent } from "./FeatureContent";

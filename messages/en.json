@@ -1,0 +1,367 @@
+{
+  "brand": { "name": "Nova" },
+  "metadata": {
+    "title": "Nova - Elevate Your Digital Experience",
+    "description": "Transform how you work with our AI-powered platform. Automate workflows, gain insights, and boost productivity.",
+    "imageAlt": "Nova - AI-powered platform"
+  },
+  "localeSwitcher": {
+    "switchTo": "Switch language to {language}",
+    "names": { "en": "English", "ar": "العربية" }
+  },
+  "header": {
+    "products": {
+      "label": "Products",
+      "items": {
+        "analytics": "Analytics",
+        "automation": "Automation",
+        "collaboration": "Collaboration",
+        "security": "Security"
+      }
+    },
+    "solutions": {
+      "label": "Solutions",
+      "items": {
+        "startups": "For Startups",
+        "enterprise": "For Enterprise",
+        "teams": "For Teams",
+        "developers": "For Developers"
+      }
+    },
+    "links": { "pricing": "Pricing", "testimonials": "Testimonials" },
+    "login": "Log in",
+    "getStarted": "Get Started",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "footer": {
+    "description": "Empowering businesses with AI-powered solutions that drive growth and efficiency.",
+    "copyright": "© {year} Nova. All rights reserved.",
+    "social": {
+      "twitter": "Twitter",
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn",
+      "github": "GitHub"
+    },
+    "groups": {
+      "product": {
+        "title": "Product",
+        "links": {
+          "features": "Features",
+          "pricing": "Pricing",
+          "integrations": "Integrations",
+          "roadmap": "Roadmap",
+          "changelog": "Changelog"
+        }
+      },
+      "company": {
+        "title": "Company",
+        "links": {
+          "about": "About",
+          "blog": "Blog",
+          "careers": "Careers",
+          "customers": "Customers",
+          "contact": "Contact"
+        }
+      },
+      "resources": {
+        "title": "Resources",
+        "links": {
+          "documentation": "Documentation",
+          "helpCenter": "Help Center",
+          "apiReference": "API Reference",
+          "community": "Community",
+          "status": "Status"
+        }
+      }
+    },
+    "legal": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "cookies": "Cookie Policy"
+    }
+  },
+  "hero": {
+    "badge": "Introducing Nova AI Assistant",
+    "title": { "line1": "Elevate Your", "line2": "Digital Experience" },
+    "description": "Transform how you work with our AI-powered platform. Automate workflows, gain insights, and boost productivity.",
+    "primaryCta": "Start Free Trial",
+    "secondaryCta": "Watch Demo",
+    "trustedBy": "Trusted by <strong>{count}</strong> companies",
+    "imageAlt": "Dashboard Preview",
+    "status": { "online": "System Online", "processing": "Processing data..." }
+  },
+  "socialProof": {
+    "eyebrow": "Trusted by industry leaders",
+    "title": "Join thousands of satisfied customers",
+    "logosLabel": "Companies using our platform",
+    "logoAlt": "{name} logo",
+    "statsLabel": "Key platform statistics",
+    "stats": {
+      "activeUsers": "Active Users",
+      "enterpriseClients": "Enterprise Clients",
+      "uptime": "Uptime SLA",
+      "support": "Dedicated Support"
+    }
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "subtitle": "Simple four-step process",
+    "goToStep": "Go to step {number}",
+    "steps": {
+      "signUp": {
+        "title": "Sign Up",
+        "description": "Create your account in seconds. No credit card required for the free trial."
+      },
+      "integrate": {
+        "title": "Integrate",
+        "description": "Connect your existing tools and services with our one-click integrations."
+      },
+      "customize": {
+        "title": "Customize",
+        "description": "Configure your workspace and workflows to match your unique business needs."
+      },
+      "launch": {
+        "title": "Launch",
+        "description": "Go live with your optimized workflows and start seeing results immediately."
+      }
+    }
+  },
+  "features": {
+    "title": "Powerful Features",
+    "subtitle": "Everything you need to streamline your workflow",
+    "items": {
+      "analytics": {
+        "title": "Advanced Analytics",
+        "description": "Gain deep insights with our powerful analytics tools. Track performance, identify trends, and make data-driven decisions.",
+        "benefits": [
+          "Real-time data visualization",
+          "Custom reporting dashboards",
+          "Predictive analytics with AI",
+          "Automated insights generation"
+        ]
+      },
+      "automation": {
+        "title": "Intelligent Automation",
+        "description": "Streamline your workflows with smart automation. Reduce manual tasks and focus on what matters most.",
+        "benefits": [
+          "Workflow automation builder",
+          "Trigger-based actions",
+          "Integration with 100+ tools",
+          "AI-powered suggestions"
+        ]
+      },
+      "collaboration": {
+        "title": "Team Collaboration",
+        "description": "Work seamlessly with your team in real-time. Share, edit, and collaborate on projects from anywhere.",
+        "benefits": [
+          "Real-time document editing",
+          "Project management tools",
+          "Team chat and video calls",
+          "Permission controls"
+        ]
+      },
+      "security": {
+        "title": "Enterprise Security",
+        "description": "Protect your data with enterprise-grade security. Ensure compliance and maintain privacy.",
+        "benefits": [
+          "End-to-end encryption",
+          "Role-based access control",
+          "Compliance monitoring",
+          "Audit logs and reporting"
+        ]
+      }
+    }
+  },
+  "testimonials": {
+    "title": "What Our Customers Say",
+    "subtitle": "Don't just take our word for it - hear from our satisfied customers.",
+    "quoted": "“{quote}”",
+    "rating": "Rated {rating} out of 5 stars",
+    "slide": "slide",
+    "slideLabel": "Testimonial {current} of {total}",
+    "carousel": "testimonial carousel",
+    "region": "Customer testimonials",
+    "navigation": "Testimonial navigation",
+    "previous": "Previous testimonial",
+    "next": "Next testimonial",
+    "goTo": "Go to testimonial {number}",
+    "items": {
+      "sarah": {
+        "author": "Sarah Johnson",
+        "role": "Product Manager, TechCorp",
+        "quote": "Nova has completely transformed how we manage our projects. The AI features are genuinely helpful and the interface is beautiful.",
+        "portraitAlt": "Portrait of {author}"
+      },
+      "michael": {
+        "author": "Michael Chen",
+        "role": "CTO, GrowthStartup",
+        "quote": "We've seen a 40% increase in productivity since implementing Nova. The automation features alone have saved us countless hours.",
+        "portraitAlt": "Portrait of {author}"
+      },
+      "emily": {
+        "author": "Emily Rodriguez",
+        "role": "Operations Director, ScaleUp Inc",
+        "quote": "The customer support is exceptional. Whenever we've had questions, the team has been quick to respond and incredibly helpful.",
+        "portraitAlt": "Portrait of {author}"
+      }
+    }
+  },
+  "pricing": {
+    "title": "Simple, Transparent Pricing",
+    "subtitle": "Choose the plan that works best for your business. All plans include our core features.",
+    "trialInfo": "All plans include a 14-day free trial. No credit card required.",
+    "billingFrequency": "Billing Frequency",
+    "annual": "Annual",
+    "monthly": "Monthly",
+    "annualBilling": "Annual billing",
+    "monthlyBilling": "Monthly billing",
+    "save": "Save 20%",
+    "mostPopular": "Most Popular",
+    "year": "year",
+    "month": "month",
+    "per": "/{period}",
+    "price": "${price}",
+    "priceLabel": "{price} dollars per {period}",
+    "plans": {
+      "featuresLabel": "{plan} plan features",
+      "ctaLabel": "{cta} with the {plan} plan",
+      "starter": {
+        "name": "Starter",
+        "description": "Perfect for individuals and small teams",
+        "cta": "Get Started",
+        "features": [
+          "5 Team Members",
+          "10GB Storage",
+          "Basic Analytics",
+          "Email Support",
+          "2 Projects"
+        ]
+      },
+      "professional": {
+        "name": "Professional",
+        "description": "Ideal for growing businesses",
+        "cta": "Get Started",
+        "features": [
+          "15 Team Members",
+          "50GB Storage",
+          "Advanced Analytics",
+          "Priority Support",
+          "API Access",
+          "Custom Integrations",
+          "Unlimited Projects"
+        ]
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "description": "For large organizations with complex needs",
+        "cta": "Contact Sales",
+        "features": [
+          "Unlimited Team Members",
+          "500GB Storage",
+          "Enterprise Analytics",
+          "24/7 Dedicated Support",
+          "Advanced Security",
+          "Custom Development",
+          "Onboarding Assistance",
+          "SLA Guarantee"
+        ]
+      }
+    }
+  },
+  "integrations": {
+    "title": "Seamless Integrations",
+    "subtitle": "Connect with your favorite tools and services",
+    "ctaText": "Don't see what you need?",
+    "ctaLink": "Request an integration",
+    "ctaAriaLabel": "Request a custom integration",
+    "listLabel": "Available integrations",
+    "categoryLabel": "{category} integration",
+    "categories": {
+      "communication": "Communication",
+      "development": "Development",
+      "productivity": "Productivity",
+      "workspace": "Workspace",
+      "design": "Design",
+      "crm": "CRM",
+      "automation": "Automation",
+      "payments": "Payments",
+      "marketing": "Marketing",
+      "meetings": "Meetings",
+      "projectManagement": "Project Management",
+      "support": "Support"
+    }
+  },
+  "blog": {
+    "title": "Latest Insights",
+    "subtitle": "Expert advice on productivity and technology",
+    "viewAll": "View All Articles",
+    "viewAllLabel": "View all blog articles",
+    "readMore": "Read More",
+    "readMoreLabel": "Read more about {title}",
+    "imageAlt": "Featured image for article: {title}",
+    "categoryLabel": "Category: {category}",
+    "publishedLabel": "Published date: {date}",
+    "readTimeLabel": "Reading time: {readTime}",
+    "readTime": "{minutes} min read",
+    "categories": {
+      "technology": "Technology",
+      "productivity": "Productivity",
+      "strategy": "Strategy"
+    },
+    "articles": {
+      "aiWorkflow": {
+        "title": "10 Ways AI Is Transforming Workflow Automation",
+        "excerpt": "Discover how artificial intelligence is revolutionizing the way businesses handle repetitive tasks and workflows."
+      },
+      "remoteCollaboration": {
+        "title": "The Future of Remote Collaboration Tools",
+        "excerpt": "See how the latest innovations in team collaboration software are making remote work more efficient than ever."
+      },
+      "dataStrategy": {
+        "title": "How to Build an Effective Data Strategy",
+        "excerpt": "Learn the essential steps to creating a data strategy that drives business growth and informed decision making."
+      }
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Have questions? We're here to help. If you don't see your question here, feel free to contact us.",
+    "contactText": "Still have questions?",
+    "contactLink": "Contact our support team",
+    "items": {
+      "trial": {
+        "question": "How does the free trial work?",
+        "answer": "Our free trial gives you full access to all features for 14 days with no credit card required. You can upgrade to a paid plan at any time during or after your trial."
+      },
+      "discounts": {
+        "question": "Do you offer discounts for startups or non-profits?",
+        "answer": "Yes, we offer special pricing for startups, non-profit organizations, and educational institutions. Please contact our sales team for more information."
+      },
+      "changePlan": {
+        "question": "Can I change my plan later?",
+        "answer": "Absolutely! You can upgrade, downgrade, or change your plan at any time. Changes to your subscription will be prorated for the remainder of your billing cycle."
+      },
+      "support": {
+        "question": "What kind of support do you offer?",
+        "answer": "We offer email support for all customers, with priority support and dedicated account managers for Enterprise plans. Our support team is available 24/7 to assist with any questions or issues."
+      },
+      "security": {
+        "question": "Is my data secure?",
+        "answer": "Security is our top priority. We use industry-standard encryption, regular security audits, and strict access controls to ensure your data is always protected. All data is stored in SOC 2 compliant data centers."
+      },
+      "export": {
+        "question": "Can I export my data?",
+        "answer": "Yes, you can export your data at any time in various formats including CSV, JSON, and PDF. We believe your data belongs to you and make it easy to take it with you if needed."
+      }
+    }
+  },
+  "cta": {
+    "title": "Ready to Transform Your Workflow?",
+    "description": "Join thousands of satisfied customers who are already using Nova to streamline their operations and boost productivity.",
+    "primaryCta": "Start Free Trial",
+    "secondaryCta": "Schedule Demo",
+    "note": "No credit card required. 14-day free trial."
+  }
+}

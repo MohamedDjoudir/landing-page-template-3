@@ -1,5 +1,3 @@
-"use client";
-
 import { CtaBackground, CtaCard } from "./components";
 
 export default function Cta() {
