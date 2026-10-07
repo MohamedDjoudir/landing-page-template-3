@@ -1,7 +1,7 @@
 import type { Company, Stat } from "../types";
 
 export const COMPANIES: Company[] = [
-  { name: "slackware", logo: "https://cdn.simpleicons.org/slackware" },
+  { name: "Slack", logo: "/images/logos/slack.svg" },
   { name: "GitHub", logo: "https://cdn.simpleicons.org/github" },
   { name: "Notion", logo: "https://cdn.simpleicons.org/notion" },
   { name: "Google", logo: "https://cdn.simpleicons.org/google" },

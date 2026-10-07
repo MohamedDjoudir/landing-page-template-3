@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/providers";
 import { Header, Footer } from "@/layouts";
 import { routing } from "@/i18n/routing";
 import { getDirection } from "@/i18n/direction";
+import { SITE_URL } from "@/lib/siteUrl";
 
 const inter = Inter({ subsets: ["latin"] });
 const notoArabic = Noto_Sans_Arabic({ subsets: ["arabic"] });
@@ -25,8 +26,16 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "metadata" });
 
   return {
+    metadataBase: new URL(SITE_URL),
     title: t("title"),
     description: t("description"),
+    alternates: {
+      canonical: `/${locale}`,
+      languages: {
+        ...Object.fromEntries(routing.locales.map((l) => [l, `/${l}`])),
+        "x-default": `/${routing.defaultLocale}`,
+      },
+    },
     icons: {
       icon: "/favicon.svg",
       shortcut: "/favicon.svg",

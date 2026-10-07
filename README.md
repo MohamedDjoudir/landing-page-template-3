@@ -8,22 +8,87 @@
 
 ## Getting Started
 
-### Prerequisites
+### Requirements
 
-- Node.js 18.17 or later
-- Yarn (the repository pins Yarn 4 through `packageManager`; run `corepack enable`)
+- **With Docker:** Docker Desktop (or Docker Engine) and nothing else.
+- **Without Docker:** Node.js 22 or newer, and Yarn 4. The repository pins Yarn 4 through `packageManager`; if the `yarn` command is missing, run `corepack enable` once.
 
-### Installation
+### Path A: Docker
+
+From this folder:
+
+```sh
+docker build -t company-site .
+docker run -p 3030:3030 company-site
+```
+
+Open http://localhost:3030. English is at `/en`, Arabic at `/ar`.
+
+### Path B: without Docker
 
 ```sh
 yarn install
 yarn dev
-yarn build      # production build
-yarn start      # serve the production build
-yarn lint
 ```
 
-There are no environment variables to configure: the template is a static landing page with no back-end.
+Open http://localhost:3030. The development server reloads as you edit.
+
+For the production build:
+
+```sh
+yarn build
+yarn start
+```
+
+It is served on http://localhost:3030 too.
+
+### A port is already in use?
+
+Another program is using port 3030. Stop it, or use another port:
+
+- **Docker:** change the left number, for example `docker run -p 3041:3030 company-site`, then open http://localhost:3041.
+- **Without Docker:** `yarn dev -p 3041` (or `yarn start -p 3041`), then open http://localhost:3041.
+
+### Environment variables
+
+The site runs without a `.env` file. It reads one optional variable, listed in `.env.example`:
+
+| Variable | Default | What it does |
+| --- | --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | `http://localhost:3030` | The address the site is served from. The canonical link, the language alternates and the social sharing image are built from it. |
+
+Set it to your real domain before you deploy. It is read at build time, so build again after changing it:
+
+- **Without Docker:** `cp .env.example .env`, edit the value, then `yarn build`.
+- **Docker:** `docker build -t company-site --build-arg NEXT_PUBLIC_SITE_URL=https://www.your-domain.com .`
+
+### Scripts
+
+| Command | What it does |
+| --- | --- |
+| `yarn dev` | Development server on port 3030 |
+| `yarn build` | Production build |
+| `yarn start` | Serves the production build on port 3030 |
+| `yarn lint` | ESLint (Next.js rules) |
+| `yarn typecheck` | TypeScript check (`tsc --noEmit`) |
+
+---
+
+## Customizing
+
+| What | Where |
+| --- | --- |
+| Text, in every language | `messages/en.json` and `messages/ar.json` (same keys in both) |
+| Brand name | `brand.name` in both message files |
+| Page title and description | `metadata` in both message files |
+| Images | `public/images/` (hero, steps, features), referenced from each section's `constants/` folder |
+| Remote images and logos | `constants/` of the Testimonials, Features, Integrations and SocialProof sections; any new remote host must be added to `images.remotePatterns` in `next.config.mjs` |
+| Logo mark | `src/components/Logo.tsx` |
+| Favicon and app icons | `public/favicon.svg`, `public/favicon.ico`, `public/apple-touch-icon.png`, `public/site.webmanifest` |
+| Social sharing image | `public/image.png` (1200 x 630) |
+| Colours | The red to amber accent gradient is written as Tailwind classes (`from-red-500`, `to-amber-500`) in the components, starting with `src/components/GradientButton.tsx`; theme tokens are in `src/app/globals.css` and `tailwind.config.ts` |
+| Fonts | `src/app/[locale]/layout.tsx`: Inter for English, Noto Sans Arabic for Arabic, both through `next/font/google` |
+| Sections on the page and their order | `src/app/[locale]/page.tsx` |
 
 ---
 
@@ -40,7 +105,7 @@ The site is localized with **next-intl** and ships two locales:
 - `src/middleware.ts` redirects `/` to the default locale.
 - `<html lang dir>` is set from the locale, and layout uses logical Tailwind classes (`ms-*`, `pe-*`, `start-*`, `text-start`...) so RTL mirrors automatically.
 - All copy lives in `messages/en.json` and `messages/ar.json`. Both files must keep the same keys.
-- Components read text with `useTranslations`; constants only hold keys, ids, routes, icons and numbers.
+- Components read text with `useTranslations`; constants only hold keys, ids, routes, icons, image paths and numbers.
 - A locale switcher sits in the header (`src/components/LocaleSwitcher.tsx`).
 
 To add a locale, add its code to `src/i18n/routing.ts`, create `messages/<locale>.json`, and add the locale name under `localeSwitcher.names` in every messages file. If it is right-to-left, list it in `src/i18n/direction.ts`.
@@ -68,7 +133,7 @@ src/
 │       └── types/
 ├── layouts/                # Header and Footer, same subfolder convention
 ├── hooks/                  # Shared hooks (useTextDirection)
-├── lib/utils.ts            # cn() helper
+├── lib/                    # cn() helper, site URL
 └── providers/              # ThemeProvider
 ```
 
@@ -88,7 +153,7 @@ Barrel `index.ts` files only re-export.
 ## Styling
 
 - **Tailwind CSS** with CSS variables for theme colors in `globals.css`.
-- **Dark mode** through `next-themes`.
+- The page is designed dark. `next-themes` sets the `dark` class on `<html>`.
 - Entrance animations go through the shared `Reveal` component.
 
 ---
@@ -120,3 +185,4 @@ For questions or support, contact the [Aniq UI team](https://www.aniq-ui.com/#co
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 Created by [Aniq UI](https://www.aniq-ui.com), premium Next.js templates for modern web apps.
+
