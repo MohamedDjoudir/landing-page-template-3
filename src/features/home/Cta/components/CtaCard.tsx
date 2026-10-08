@@ -1,10 +1,12 @@
 import { useTranslations } from "next-intl";
 import { GlowFrame } from "@/components/GlowFrame";
 import { Reveal } from "@/components/Reveal";
+import { useBrandName } from "@/hooks";
 import { CtaButtons } from "./CtaButtons";
 
 export function CtaCard() {
   const t = useTranslations("cta");
+  const brand = useBrandName();
 
   return (
     <Reveal inView className="max-w-4xl mx-auto">
@@ -13,7 +15,7 @@ export function CtaCard() {
           {t("title")}
         </h2>
         <p className="text-base sm:text-lg md:text-xl text-white/70 mb-6 sm:mb-8 max-w-2xl mx-auto">
-          {t("description")}
+          {t("description", { brand })}
         </p>
 
         <CtaButtons />

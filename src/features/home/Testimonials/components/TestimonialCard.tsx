@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { useTextDirection } from "@/hooks";
+import { useBrandName, useTextDirection } from "@/hooks";
 import type { Testimonial } from "../types";
 import { TestimonialAuthor } from "./TestimonialAuthor";
 import { TestimonialQuote } from "./TestimonialQuote";
@@ -20,6 +20,7 @@ export function TestimonialCard({
 }: TestimonialCardProps) {
   const t = useTranslations("testimonials");
   const { sign } = useTextDirection();
+  const brand = useBrandName();
 
   return (
     <AnimatePresence mode="wait">
@@ -38,7 +39,7 @@ export function TestimonialCard({
         <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-center">
           <TestimonialAuthor testimonial={testimonial} />
           <TestimonialQuote
-            quote={t(`items.${testimonial.id}.quote`)}
+            quote={t(`items.${testimonial.id}.quote`, { brand })}
           />
         </div>
       </motion.div>

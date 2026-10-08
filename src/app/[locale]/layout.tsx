@@ -24,10 +24,11 @@ export async function generateMetadata({
 }: LocaleParams): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata" });
+  const brand = (await getTranslations({ locale, namespace: "brand" }))("name");
 
   return {
     metadataBase: new URL(SITE_URL),
-    title: t("title"),
+    title: t("title", { brand }),
     description: t("description"),
     alternates: {
       canonical: `/${locale}`,
@@ -41,17 +42,16 @@ export async function generateMetadata({
       shortcut: "/favicon.svg",
       apple: "/apple-touch-icon.png",
     },
-    manifest: "/site.webmanifest",
     generator: "Mohamed Djoudir",
     openGraph: {
-      title: t("title"),
+      title: t("title", { brand }),
       description: t("description"),
       images: [
         {
           url: "/image.png",
           width: 1200,
           height: 630,
-          alt: t("imageAlt"),
+          alt: t("imageAlt", { brand }),
         },
       ],
       type: "website",

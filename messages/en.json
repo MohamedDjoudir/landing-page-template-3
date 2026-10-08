@@ -1,9 +1,9 @@
 {
   "brand": { "name": "Nova" },
   "metadata": {
-    "title": "Nova - Elevate Your Digital Experience",
+    "title": "{brand} - Elevate Your Digital Experience",
     "description": "Transform how you work with our AI-powered platform. Automate workflows, gain insights, and boost productivity.",
-    "imageAlt": "Nova - AI-powered platform"
+    "imageAlt": "{brand} - AI-powered platform"
   },
   "localeSwitcher": {
     "switchTo": "Switch language to {language}",
@@ -36,7 +36,7 @@
   },
   "footer": {
     "description": "Empowering businesses with AI-powered solutions that drive growth and efficiency.",
-    "copyright": "© {year} Nova. All rights reserved.",
+    "copyright": "© {year} {brand}. All rights reserved.",
     "social": {
       "twitter": "Twitter",
       "facebook": "Facebook",
@@ -83,7 +83,7 @@
     }
   },
   "hero": {
-    "badge": "Introducing Nova AI Assistant",
+    "badge": "Introducing {brand} AI Assistant",
     "title": { "line1": "Elevate Your", "line2": "Digital Experience" },
     "description": "Transform how you work with our AI-powered platform. Automate workflows, gain insights, and boost productivity.",
     "primaryCta": "Start Free Trial",
@@ -191,13 +191,13 @@
       "sarah": {
         "author": "Sarah Johnson",
         "role": "Product Manager, TechCorp",
-        "quote": "Nova has completely transformed how we manage our projects. The AI features are genuinely helpful and the interface is beautiful.",
+        "quote": "{brand} has completely transformed how we manage our projects. The AI features are genuinely helpful and the interface is beautiful.",
         "portraitAlt": "Portrait of {author}"
       },
       "michael": {
         "author": "Michael Chen",
         "role": "CTO, GrowthStartup",
-        "quote": "We've seen a 40% increase in productivity since implementing Nova. The automation features alone have saved us countless hours.",
+        "quote": "We've seen a 40% increase in productivity since implementing {brand}. The automation features alone have saved us countless hours.",
         "portraitAlt": "Portrait of {author}"
       },
       "emily": {
@@ -359,7 +359,7 @@
   },
   "cta": {
     "title": "Ready to Transform Your Workflow?",
-    "description": "Join thousands of satisfied customers who are already using Nova to streamline their operations and boost productivity.",
+    "description": "Join thousands of satisfied customers who are already using {brand} to streamline their operations and boost productivity.",
     "primaryCta": "Start Free Trial",
     "secondaryCta": "Schedule Demo",
     "note": "No credit card required. 14-day free trial."

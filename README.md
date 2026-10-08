@@ -1,6 +1,6 @@
-# NOVA: Business Case Studies Template (Next.js + Tailwind CSS)
+# NOVA: AI Product Landing Page Template (Next.js + Tailwind CSS)
 
-**NOVA** is a professional and elegant template built with **Next.js 15**, **TypeScript**, and **Tailwind CSS**, designed to showcase detailed business case studies, client success stories, and project highlights. Perfect for consultancies, agencies, and SaaS businesses.
+**NOVA** is a one-page landing page for an AI product, built with **Next.js 15**, **TypeScript** and **Tailwind CSS**, in English and Arabic. It has a hero, a logo and stats row, how it works, a features tab view, integrations, testimonials, a blog preview, pricing with a monthly and yearly toggle, an FAQ and a closing call to action. It is a single page: the blog cards, the menu links and the buttons are placeholders for your own pages and actions.
 
 **Live Demo & More Info:** [aniq-ui.com NOVA Template](https://www.aniq-ui.com/en/templates/business-case-studies-nextjs-template)
 
@@ -79,12 +79,12 @@ Set it to your real domain before you deploy. It is read at build time, so build
 | What | Where |
 | --- | --- |
 | Text, in every language | `messages/en.json` and `messages/ar.json` (same keys in both) |
-| Brand name | `brand.name` in both message files |
+| Brand name | `brand.name` in `messages/en.json` and `messages/ar.json`. Every text that names the brand says `{brand}` and takes this value, and so does the installed app's name (`src/app/manifest.ts` reads it from the default locale) |
 | Page title and description | `metadata` in both message files |
-| Images | `public/images/` (hero, steps, features), referenced from each section's `constants/` folder |
-| Remote images and logos | `constants/` of the Testimonials, Features, Integrations and SocialProof sections; any new remote host must be added to `images.remotePatterns` in `next.config.mjs` |
+| Images | `public/images/` (hero, how it works steps, the first feature, the Slack and Salesforce logos), referenced from each section's `constants/` folder |
+| Remote images and logos | The blog preview, testimonial and feature photos come from Unsplash (`images.unsplash.com`), and most logos from Simple Icons (`cdn.simpleicons.org`). They are set in the `constants/` folder of the BlogPreview, Testimonials, Features, Integrations and SocialProof sections. Replace them with your own files in `public/images/` before you go live. An image from any other remote host must be added to `images.remotePatterns` in `next.config.mjs` |
 | Logo mark | `src/components/Logo.tsx` |
-| Favicon and app icons | `public/favicon.svg`, `public/favicon.ico`, `public/apple-touch-icon.png`, `public/site.webmanifest` |
+| Favicon and app icons | `public/favicon.svg`, `public/favicon.ico`, `public/apple-touch-icon.png`, `public/web-app-manifest-*.png`; the manifest itself is `src/app/manifest.ts` |
 | Social sharing image | `public/image.png` (1200 x 630) |
 | Colours | The red to amber accent gradient is written as Tailwind classes (`from-red-500`, `to-amber-500`) in the components, starting with `src/components/GradientButton.tsx`; theme tokens are in `src/app/globals.css` and `tailwind.config.ts` |
 | Fonts | `src/app/[locale]/layout.tsx`: Inter for English, Noto Sans Arabic for Arabic, both through `next/font/google` |
@@ -102,11 +102,11 @@ The site is localized with **next-intl** and ships two locales:
 | `ar`   | Arabic   | RTL |
 
 - Routes are prefixed with the locale: `/en`, `/ar`.
-- `src/middleware.ts` redirects `/` to the default locale.
+- `src/middleware.ts` sends `/` to the browser's language when it is `en` or `ar`, and to English otherwise.
 - `<html lang dir>` is set from the locale, and layout uses logical Tailwind classes (`ms-*`, `pe-*`, `start-*`, `text-start`...) so RTL mirrors automatically.
 - All copy lives in `messages/en.json` and `messages/ar.json`. Both files must keep the same keys.
 - Components read text with `useTranslations`; constants only hold keys, ids, routes, icons, image paths and numbers.
-- A locale switcher sits in the header (`src/components/LocaleSwitcher.tsx`).
+- A locale switcher sits in the header (`src/components/LocaleSwitcher.tsx`), with one link for every other locale.
 
 To add a locale, add its code to `src/i18n/routing.ts`, create `messages/<locale>.json`, and add the locale name under `localeSwitcher.names` in every messages file. If it is right-to-left, list it in `src/i18n/direction.ts`.
 
@@ -119,6 +119,7 @@ messages/                   # en.json, ar.json
 src/
 ├── app/
 │   ├── globals.css
+│   ├── manifest.ts         # web app manifest, named after brand.name
 │   └── [locale]/           # layout.tsx (html, providers, metadata) and page.tsx (home composition)
 ├── i18n/                   # routing, request config, locale-aware navigation, text direction
 ├── middleware.ts           # locale negotiation
@@ -132,7 +133,7 @@ src/
 │       ├── constants/      # Keys, ids, images, numbers
 │       └── types/
 ├── layouts/                # Header and Footer, same subfolder convention
-├── hooks/                  # Shared hooks (useTextDirection)
+├── hooks/                  # Shared hooks (useTextDirection, useBrandName)
 ├── lib/                    # cn() helper, site URL
 └── providers/              # ThemeProvider
 ```
